@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { FiThumbsUp } from "react-icons/fi";
-import { forwardRef } from "react";
 
-const Thumbnail = forwardRef(({ result }, ref) => {
+const Thumbnail = ({ result }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original/";
   return (
-    <div ref={ref} className="p-2 group cursor-pointer transition duration-200 ease-in transform 
+    <div className="p-2 group cursor-pointer transition duration-200 ease-in transform 
      sm:hover:scale-105 hover:z-50">
       <Image
         layout="responsive"
@@ -15,9 +14,7 @@ const Thumbnail = forwardRef(({ result }, ref) => {
         src={
           `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
           `${BASE_URL}${result.poster_path}`
-
         }
-        alt="IMAGE"
       />
       <div className="p-2">
         <p className="truncate max-w-md">{result.overview}</p>
@@ -35,6 +32,6 @@ const Thumbnail = forwardRef(({ result }, ref) => {
       </div>
     </div>
   );
-})
+}
 
 export default Thumbnail;
